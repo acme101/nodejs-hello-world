@@ -1,0 +1,5 @@
+apps:
+  - script   : './app.js'
+    name     : 'nodejs-hello-world'
+    exec_mode: 'cluster'
+    instances: 1
