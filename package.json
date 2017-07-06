@@ -1,0 +1,11 @@
+{
+  "name": "nodejs-hello-world",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "nodejs-hello-world",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Teracy",
+  "license": "MIT"
+}
