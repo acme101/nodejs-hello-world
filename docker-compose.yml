@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  dev:
+    image: ${DOCKER_IMAGE_DEV:-node:8.1.3-alpine}
+    working_dir: /opt/app
+    command: sh run-dev.sh
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      VIRTUAL_HOST: dev.nodejs.teracy.dev, ~^dev\.nodejs\..*\.xip\.io
+      VIRTUAL_PORT: 3000
+      HTTPS_METHOD: noredirect # support both http and https
+    env_file:
+      - .env-common
+      - .env-dev
+    ports:
+      - "3000"
+      - "5858"
+    volumes:
+      - .:/opt/app
+    restart: unless-stopped
+    # to get this work with https://github.com/jwilder/nginx-proxy
+    # related: https://github.com/jwilder/nginx-proxy/issues/305
+    network_mode: bridge
