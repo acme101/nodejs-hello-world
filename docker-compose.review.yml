@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  review:
+    image: ${DOCKER_IMAGE_REVIEW}
+    environment:
+      PORT: 8080
+      VIRTUAL_HOST: review.nodejs.teracy.dev, ~^review.\nodejs\..*\.xip\.io
+      HTTPS_METHOD: noredirect # support both http and https
+    env_file:
+      - .env-common
+      - .env-review
+    ports:
+      - "8080"
+    network_mode: bridge
