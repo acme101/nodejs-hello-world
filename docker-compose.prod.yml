@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CI_BUILD_ID: ${CI_BUILD_ID}
+        CI_BUILD_REF: ${CI_BUILD_REF}
+        CI_BUILD_TIME: ${CI_BUILD_TIME}
+        CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
+        NODE_ENV: production
+    image: ${DOCKER_IMAGE_PROD:-acme101/nodejs-hello-world:develop}
+    environment:
+      PORT: 8080
+      VIRTUAL_HOST: nodejs.teracy.dev, ~^nodejs\..*\.xip\.io
+      HTTPS_METHOD: noredirect # support both http and https
+    env_file:
+      - .env-common
+      - .env-prod
+    ports:
+      - "8080"
+    network_mode: bridge

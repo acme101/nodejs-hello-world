@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-hello-world",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "nodejs-hello-world",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon --inspect=0.0.0.0:5858",
+    "dev:brk": "nodemon --inspec-brk=0.0.0.0:5858",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Teracy",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
